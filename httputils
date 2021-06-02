@@ -48,5 +48,5 @@ function downloadfile(filepath,url)
 	if result == false then 
 		return false
 	end
-	storeFile(filepath,result.readAll())
+	fileutils.storeFile(filepath,result.readAll())
 end
