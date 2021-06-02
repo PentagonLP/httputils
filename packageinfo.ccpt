@@ -1,0 +1,13 @@
+{   
+	name = "HttpUtils",
+	comment = "Library to recieve data and files via http(s)",
+	author = "PentagonLP",
+	website = "https://github.com/PentagonLP/httputils/",
+	newestversion = "1.0",
+	install = {
+		url = "https://raw.githubusercontent.com/PentagonLP/httputils/main/httputils",
+		filename = "httputils",
+		type = "library",
+	},
+	dependencies = {},
+}
