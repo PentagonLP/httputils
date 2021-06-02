@@ -9,5 +9,7 @@
 		filename = "httputils",
 		type = "library",
 	},
-	dependencies = {},
+	dependencies = {
+		fileutils = "1.0"
+	},
 }
