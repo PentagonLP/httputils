@@ -2,7 +2,7 @@
 	HttpUtils Library for ComputerCraft
 	Author: PentagonLP
 	Version: 1.0
-	Lines of Code: 50; Characters: 1.639
+	Lines of Code: 52; Characters: 1.667
 ]]
 
 os.loadAPI("/lib/fileutils")
