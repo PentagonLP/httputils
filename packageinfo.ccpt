@@ -5,11 +5,12 @@
 	website = "https://github.com/PentagonLP/httputils/",
 	newestversion = "1.0",
 	install = {
-		url = "https://raw.githubusercontent.com/PentagonLP/httputils/main/httputils",
+		url = "https://raw.githubusercontent.com/PentagonLP/httputils/main/httputils.lua",
 		filename = "httputils",
 		type = "library",
 	},
 	dependencies = {
-		fileutils = "1.0"
+		fileutils = "1.0",
+		pprint = "1.0"
 	},
 }
