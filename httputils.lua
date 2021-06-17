@@ -2,7 +2,6 @@
 	HttpUtils Library for ComputerCraft
 	Author: PentagonLP
 	Version: 1.0
-	Lines of Code: 52; Characters: 1.667
 ]]
 
 os.loadAPI("/lib/fileutils")
@@ -35,6 +34,10 @@ function gethttpdata(url)
 	end
 	data = result.readAll()
 	data = string.gsub(data,"\n","")
+	if textutils.unserialize(data) == nil then 
+		properprint.pprint("ERROR: Unable to parse data fetched from '" .. url .. "'")
+		return false
+	end
 	return textutils.unserialize(data)
 end
 
