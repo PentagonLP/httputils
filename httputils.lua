@@ -1,6 +1,6 @@
 --[[ 
 	HttpUtils Library for ComputerCraft
-	Author: PentagonLP
+	Authors: PentagonLP, SkyTheCodeMaster
 	Version: 1.0
 ]]
 
@@ -12,12 +12,12 @@ os.loadAPI("/lib/fileutils")
 --]]
 function gethttpresult(url)
 	if not http.checkURL(url) then
-		properprint.pprint("ERROR: Url '" .. url .. "' is blocked in config. Unable to fetch data.")
+		print("ERROR: Url '" .. url .. "' is blocked in config. Unable to fetch data.")
 		return false
 	end
-	result = http.get(url)
-	if result == nil then
-		properprint.pprint("ERROR: Unable to reach '" .. url .. "'")
+	local result,err = http.get(url)
+	if not result then
+		print("ERROR: Unable to reach '" .. url .. "' because '" .. err .. "'")
 		return false
 	end
 	return result
@@ -28,14 +28,14 @@ end
 	@return Table|boolean result|error: The content of the site parsed into a table; If the URL is not reachable, an error is printed in the terminal and boolean false is returned
 --]]
 function gethttpdata(url)
-	result = gethttpresult(url)
-	if result == false then 
+	local result = gethttpresult(url)
+	if not result then 
 		return false
 	end
-	data = result.readAll()
+	local data = result.readAll()
 	data = string.gsub(data,"\n","")
 	if textutils.unserialize(data) == nil then 
-		properprint.pprint("ERROR: Unable to parse data fetched from '" .. url .. "'")
+		print("ERROR: Unable to parse data fetched from '" .. url .. "'")
 		return false
 	end
 	return textutils.unserialize(data)
@@ -47,8 +47,8 @@ end
 	@return nil|boolean nil|error: nil; If the URL is not reachable, an error is printed in the terminal and boolean false is returned
 --]]
 function downloadfile(filepath,url)
-	result = gethttpresult(url)
-	if result == false then 
+	local result = gethttpresult(url)
+	if not result then 
 		return false
 	end
 	fileutils.storeFile(filepath,result.readAll())
