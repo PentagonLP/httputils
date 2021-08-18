@@ -44,7 +44,7 @@ end
 --[[ Download file HTTP URL
 	@param String filepath: Filepath where to create file (if file already exists, it gets overwritten)
 	@param String url: The desired URL
-	@return nil|boolean nil|error: nil; If the URL is not reachable, an error is printed in the terminal and boolean false is returned
+	@return boolean error: If the URL is not reachable, an error is printed in the terminal and boolean false is returned; If everything goes well, true is returned
 --]]
 function downloadfile(filepath,url)
 	local result = gethttpresult(url)
@@ -52,4 +52,5 @@ function downloadfile(filepath,url)
 		return false
 	end
 	fileutils.storeFile(filepath,result.readAll())
+	return true
 end
